@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html ng-app="BasicHttpAuthExample">
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+<meta charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
+ <!-- <meta name="viewport" content="width=device-width, initial-scale=1">-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</head>
+
+<body onload="myObject.myFunction()">
+<div class="container">
+  <div class="page-header">
+    <h1>Prueba de sumatoria del cubo......</h1>      
+  </div>
+  <div class="alert alert-info">
+	<p>Puede hacerlo ud mismo.</p>     
+  </div>
+  <div id="autoP" class="alert alert-warning">
+  <p  href="#" onclick="myTesterObject.inittest()">Puede hacer clic aqui para iniciar una prueba automatica</p>      
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+  
+
+<div id="tvalue" class="container">
+	<div class="alert alert-info">
+  <strong>T </strong> Indica el numero de iteraciones
+</div>
+   Valor de T:<br>
+  <input type="text" id="tvalor" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control input-lg">
+  <br><br>
+  <input id="Tbutton"  type="button" value="Submit" onclick = "myObject.tisReady()" class="btn btn-success">
+ 
+</div>
+
+<div id="nmvalue" class="container">
+		<div class="alert alert-info">
+  <strong>n </strong> Indica el tamaño de la matriz [n][n][n]
+</div>
+   Valor de N:<br>
+  <input type="text" id="nvalor" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control input-lg">
+  <br>
+  	<div class="alert alert-info">
+  <strong>m </strong> Indica el numero de operaciones Update/Query
+</div>
+   Valor de M:<br>
+  <input type="text" id="mvalor" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control input-lg">
+  <br><br>
+  <input id="nmbutton" type="button" value="Submit" onclick = "myObject.nmisReady()" class="btn btn-success">
+
+</div>
+
+<div id = "tipoqueryquery" class="container">
+		<div class="alert alert-info">
+  <strong>Update/Query</strong> el formato Updte es cuatro numero separados por espacio (1 1 1 2), el formato de Query son seis numero separados por espacio (1 1 1 2 2 2)
+</div>
+	  Digite su query: <div id="intentos"></div><br> 
+  <input type="text" id="queryvalor" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 32 ' class="form-control input-lg">
+  <br><br>
+	<input id="querybutton"type="button" value="Submit" onclick = "myObject.queryselector(1)" class="btn btn-success">
+</div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+		<div class="container">
+		<ol>
+
+		</ol>
+		<div>
+	</div>
+</div>
+<script>
+var t , n , m ,con,init = isqueriable = next= 0
+var promises = [];
+var myArr = new Array()
+var myTesterObject ={
+	
+	inittest : function ()
+	{
+		myTesterObject.setTvalue(myTesterObject.randomf(1),myTesterObject.randomf(9),myTesterObject.randomf(20))
+                        
+                                                      
+	},
+	setTvalue : function (t,m,n,tvalue = $("#tvalor").val(t),
+						tclici=$(function(){
+							$( "#Tbutton" ).trigger( "click" );
+						
+						}), 
+						nmclick=$(function(){
+							nvalue = $("#nvalor").val(m)
+							mvalue = $("#mvalor").val(n)
+							
+						}),
+						nmclici=$(function(){$( "#nmbutton" ).trigger( "click" )}),
+						
+						querymanager=$(function(){
+							var querynumnber = 1
+                                                        var fn = ""
+							myTesterObject.setupdatevalue()
+                                                          
+								for(var i = 0; i < n; i++) {
+									
+									if(myTesterObject.randomf(2)==1) 
+										var promise = myTesterObject.setupdatevalue
+									else
+										var promise = myTesterObject.setQueryvalue
+									
+									addToArray(promise, promises)
+									
+								}
+                                                    for(func in promises) {
+                                                       if(querynumnber==n)
+                                                          fn=fn+promises[func]()+""
+                                                      else
+                                                          fn=fn+promises[func]()+","
+                                                            
+                                                            
+                                                       
+                                                    }
+                                                       var fun = function(fn){alert("se inicia esto")} 
+                                                       console.log(fn)
+								function addToArray (data, array) {  
+								  const promise = new Promise(function (resolve, reject) {
+									setTimeout(function() {
+                                                                            
+									  array.push(data) 
+              
+									  resolve(data())
+										
+									}, 1000);
+
+									if (!array) {
+									  reject(new Error('No existe un array'))
+									}
+								  })
+								
+								  return promise
+								}
+						})       
+                                          
+			)
+	{	
+            
+	},
+	setupdatevalue : function (matrizposition = myTesterObject.randomf(n))
+	{
+		try{
+		var updatestring = matrizposition+" "+matrizposition+" "+matrizposition+" "+ myTesterObject.randomf(100)
+		$("#queryvalor").val(updatestring)
+		$("#querybutton").trigger("click")
+		$("ol").append("<li>Input : Update "+updatestring+"</li>")
+               
+            }
+              catch(err)
+              {
+                  alert(err)
+                 
+              }
+                
+	},
+	setQueryvalue : function ()
+	{
+            try{
+		var matrizposition2 = myTesterObject.randomf(n)
+		if(matrizposition2==1)
+			matrizposition2++
+		var matrizposition1 = myTesterObject.randomf(matrizposition2)
+		if(matrizposition1==matrizposition2)
+			matrizposition1--
+			
+		var querystring = matrizposition1 + " " + matrizposition1 + " " + matrizposition1 + " " + matrizposition2 + " " + matrizposition2 + " " + matrizposition2
+		$("#queryvalor").val(querystring)
+		$("#querybutton").trigger("click")
+		$("ol").append("<li>Input : Query "+querystring+"</li>")
+              
+            }
+            catch(err)
+            {
+                alert(err)
+                
+            }
+            
+	},
+	randomf : function (value)
+	{
+		return Math.floor((Math.random() * value) + 1)
+	}
+}
+var myObject = {
+	t:0,
+	n:0,
+	m:0,
+	con:0,
+	myFunction: function  ()
+	{
+			$("#tipoqueryquery").hide()
+			if(t > 0)
+			{
+				$("#autoP").hide()
+				$("#tvalue").hide()
+				$("#nmvalue").show()
+			}
+			else	
+				$("#nmvalue").hide()
+			if(n > 0 && m > 0)
+			{
+				$("#tvalue").hide()
+				$("#nmvalue").hide()
+				$("#tipoqueryquery").show()
+			}
+			
+	},
+	tisReady: function  ()
+	{
+		if($("#tvalor").val() != "")
+		{
+			t = $("#tvalor").val()
+			myObject.myFunction ()
+		}
+	},
+	nmisReady: function ()
+	{
+		t=t-1
+		n = $("#nvalor").val()
+		m = $("#mvalor").val()
+		myObject.myFunction ()
+	},
+	
+	
+	sendQuery : function(valida ="",validacion = $(function (){
+				var values = $("#queryvalor").val().split(' ')
+				valida= false
+				if (values.length == 4)
+					valida= "Update";
+				if (values.length == 6)
+					valida= "Query";
+
+			}),
+			cast = $(function(querysf= $()){
+					if (valida != false)
+					{
+						try {
+							return myObject.querys(valida,myObject.Update,myObject.Query)
+						}
+						catch (err)
+						{
+							alert(err)
+						}
+					}
+				}),
+			manage= $(function(){
+				
+				
+				
+			})
+			)
+		{	
+		},
+	queryselector: function (count = 0, 
+		sender = $(function(){ 
+			if(isqueriable==0)
+			{
+				$( "#intentos" ).text( "Este es el intento " + myObject.con )
+				myObject.sendQuery()
+				
+			}
+			isqueriable=0
+		}),
+		validator= $(function(){
+			if(myObject.con >= parseInt(m))
+			{
+				if(t>0)
+					{
+						$("ol").append("<li>-----------------------------------------</li>");
+						$("#nmvalue").show()
+						$("#tipoqueryquery").hide()
+						$("#intentos" ).text("se acabo");
+						myObject.con = count = 0
+						while(confirma == 0)
+					{
+						if(confirm("Se continuara con la siguente iteracion")){
+							confirma = 1
+							init = 0
+							myArr = new Array()
+							isqueriable=1
+							$("#querybutton").trigger("click")
+						}
+					}
+					}
+					else
+					{
+						$("#tipoqueryquery").hide()
+					}
+					var confirma = 0
+					
+					
+					
+			}
+			myObject.con = myObject.con + count	
+		})
+		
+		)
+	{	
+	
+		
+	},
+	
+	querys : function (valida,UpdateP ,QueryP)
+	{
+		if(valida == "Update")
+		{	
+			var values = $("#queryvalor").val().split(' ')
+			UpdateP(values[0]-1,values[1]-1,values[2]-1,values[3],myObject.initarray() )
+			$("ol").append("<li>el resultado del query es: " + values[3] + "</li>");
+		}
+		if(valida == "Query")
+		{
+			var values = $("#queryvalor").val().split(' ')
+			var sumaresult = QueryP(values[0]-1,values[1]-1,values[2]-1,values[3]-1,values[4]-1,values[5]-1	)
+			$("ol").append("<li>el resultado del query es: " + sumaresult + "</li>");
+			
+		}
+		next=0
+	},
+	
+	initarray : function ()
+	{
+		if(parseInt(init) == 0)
+		{
+			var x = y = z = 0
+			for ( ; x < parseInt(n); x++)
+			{	
+				myArr.push([])
+				for ( ; y < parseInt(n); y++)
+				{
+					myArr[x].push([])
+					for ( ; z < parseInt(n); z++)
+					{
+						myArr[x][y].push([])
+						myArr[x][y][z] = 0
+					}
+					z=0
+				}
+				y=0
+			}
+		}
+		init = 1 
+		return myArr
+	},
+	Update : function (x,y,z,value,matriz)
+	{	
+		try{
+			myArr[x][y][z] = parseInt(value)
+			}
+		catch(err){
+			alert(err)
+		}
+	},
+	Query : function (x1,y1,z1,x2,y2,z2)
+	{ console.log(x1+"-"+y1+"-"+z1+"-"+x2+"-"+y2+"-"+z2)
+		var suma = 0
+		try{
+			for(x3=x1;x3 <=x2;x3++)
+			{
+				for(y3=y1;y3<=y2;y3++)
+				{
+					for(z3=z1;z3<=z2;z3++)
+					{	
+						suma = myArr[x3][y3][z3]+suma
+					}
+					z3=z1
+				}
+				y3=y1
+			}
+			return suma
+		}
+		catch(err)
+		{
+			alert(err)
+		}
+	}
+
+}
+
+
+</script>
+<script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/angular-cookies.js"></script>
+    <script src="lib/ngStorage.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
