@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html ng-app="BasicHttpAuthExample">
 <head>
@@ -11,6 +12,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
 </head>
+
+
+
+
+
 
 <body onload="myObject.myFunction()">
 <div class="container">
@@ -248,9 +254,19 @@ var myObject = {
 	{
 		if($("#tvalor").val() != "")
 		{
+
 			t = $("#tvalor").val()
 			myObject.myFunction ()
 		}
+
+
+
+
+
+
+
+
+
 	},
 	nmisReady: function ()
 	{
@@ -294,15 +310,18 @@ var myObject = {
 		sender = $(function(){ 
 			if(isqueriable==0)
 			{
+
 				$( "#intentos" ).text( "Este es el intento " + myObject.con )
 				myObject.sendQuery()
 				
 			}
+
 			isqueriable=0
 		}),
 		validator= $(function(){
 			if(myObject.con >= parseInt(m))
 			{
+
 				if(t>0)
 					{
 						$("ol").append("<li>-----------------------------------------</li>");
@@ -330,6 +349,7 @@ var myObject = {
 					
 					
 			}
+
 			myObject.con = myObject.con + count	
 		})
 		
@@ -396,6 +416,7 @@ var myObject = {
 		try{
 			for(x3=x1;x3 <=x2;x3++)
 			{
+
 				for(y3=y1;y3<=y2;y3++)
 				{
 					for(z3=z1;z3<=z2;z3++)
@@ -406,13 +427,17 @@ var myObject = {
 				}
 				y3=y1
 			}
+
 			return suma
 		}
+
 		catch(err)
 		{
+
 			alert(err)
 		}
 	}
+
 
 }
 
