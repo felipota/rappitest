@@ -66,6 +66,15 @@
   <br><br>
 	<input id="querybutton"type="button" value="Submit" onclick = "myObject.queryselector(1)" class="btn btn-success">
 </div>
+
+<div id="teststart" class="container">
+	 <div id="valuestnm" class="alert alert-info">
+		<p></p>
+		</div>
+	<input id="testbutton"type="button" value="Ejecutar siguiente query" onclick = "myTesterObject.caster()" class="btn btn-success">
+</div>
+
+
   </div>
 </div>
 <div class="panel panel-default">
@@ -89,6 +98,22 @@ var myTesterObject ={
                         
                                                       
 	},
+	caster  : function (){
+				
+						function run(){
+								  var fn = promises.shift();
+								  
+								  if(!fn){
+									console.log('Done');
+									$("#teststart").hide()
+								  } else {
+								  setTimeout(function() { 
+									fn(run);
+									}, 1000)
+								  }
+								}
+						run();
+						},
 	setTvalue : function (t,m,n,tvalue = $("#tvalor").val(t),
 						tclici=$(function(){
 							$( "#Tbutton" ).trigger( "click" );
@@ -100,40 +125,37 @@ var myTesterObject ={
 							
 						}),
 						nmclici=$(function(){$( "#nmbutton" ).trigger( "click" )}),
+							starter=$(function(){
+							var valuestring = "T = " + t + ", N = " + n + ", M = " + m + "."
+							console.log(valuestring)
+							$("ol").append("<li>Input :"+valuestring+"</li>")
+							$("#valuestnm").val(valuestring)
+							$("#teststart").show()
+							$("#tipoqueryquery").hide()
+							
 						
-						querymanager=$(function(){
-							var querynumnber = 1
-                                                        var fn = ""
-							myTesterObject.setupdatevalue()
-                                                          
+						}),
+						querymanager=$(function()
+						{                       
+							myTesterObject.setupdatevalue()                                
 								for(var i = 0; i < n; i++) {
 									
 									if(myTesterObject.randomf(2)==1) 
-										var promise = myTesterObject.setupdatevalue
+										var promisex = myTesterObject.setupdatevalue
 									else
-										var promise = myTesterObject.setQueryvalue
+										var promisex = myTesterObject.setQueryvalue
 									
-									addToArray(promise, promises)
+									addToArray(promisex, promises)
 									
 								}
-                                                    for(func in promises) {
-                                                       if(querynumnber==n)
-                                                          fn=fn+promises[func]()+""
-                                                      else
-                                                          fn=fn+promises[func]()+","
-                                                            
-                                                            
-                                                       
-                                                    }
-                                                       var fun = function(fn){alert("se inicia esto")} 
-                                                       console.log(fn)
+                                           
+                                                  
 								function addToArray (data, array) {  
 								  const promise = new Promise(function (resolve, reject) {
-									setTimeout(function() {
-                                                                            
+									setTimeout(function() {                                   
 									  array.push(data) 
-              
-									  resolve(data())
+									
+									  resolve(array)// se peude ejecuta data()
 										
 									}, 1000);
 
@@ -144,15 +166,18 @@ var myTesterObject ={
 								
 								  return promise
 								}
-						})       
+								
+						})
+					
+					
                                           
 			)
 	{	
-            
+        
 	},
-	setupdatevalue : function (matrizposition = myTesterObject.randomf(n))
+	setupdatevalue : function ()
 	{
-		try{
+		try{matrizposition = myTesterObject.randomf(n)
 		var updatestring = matrizposition+" "+matrizposition+" "+matrizposition+" "+ myTesterObject.randomf(100)
 		$("#queryvalor").val(updatestring)
 		$("#querybutton").trigger("click")
@@ -202,6 +227,7 @@ var myObject = {
 	myFunction: function  ()
 	{
 			$("#tipoqueryquery").hide()
+			$("#teststart").hide()
 			if(t > 0)
 			{
 				$("#autoP").hide()
